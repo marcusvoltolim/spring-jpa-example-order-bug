@@ -15,11 +15,11 @@ This bug was reported in 2007, but without correction (see the original problem 
 ## How tests?
 * First run the command: **mvn clean install -DskipTests**, so that the QueryDSL classes are generated, they will be in the target package of the entity classes with a Q prefix.
 * Example this project: **Example.class** and **QExample.class** 
-** ![image](https://user-images.githubusercontent.com/9442331/99594021-5b347400-29d1-11eb-95a3-9735b34cda4a.png)
+  * ![image](https://user-images.githubusercontent.com/9442331/99594021-5b347400-29d1-11eb-95a3-9735b34cda4a.png)
 * After compilation, execute the unitaries tests from class: **ExampleRepositoryTest** 
 * Like on the print screen below, the tests **findAllQueryDslOrderByDateProperty** e **findAllQueryDslOrderByDateProperty** fails and 
 tests **findAllJpaRepositoryOrderByDateProperty** and **findAllQueryDslOrderByStringProperty** passes:
-** ![image](https://user-images.githubusercontent.com/9442331/99594433-f2013080-29d1-11eb-978e-d051b63f29e1.png)
+  * ![image](https://user-images.githubusercontent.com/9442331/99594433-f2013080-29d1-11eb-978e-d051b63f29e1.png)
 * Finally, update the **SpringBoot** version in pom.xml to **2.3.5.RELEASE**, rerun the tests and everyone passes!
 
 ## Technologies:
