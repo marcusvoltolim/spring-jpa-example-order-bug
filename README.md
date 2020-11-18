@@ -1,13 +1,14 @@
 # Bug simulation using order by ignoreCase with non-String column in QueryDSL
 ## Description:
 Project to simulate a bug when assembling an SQL expression using QueryDSL with 'sort by true' in non-String columns.
+
 This bug is complicated to simulate because it depends on the database, for columns of type Date (Timestamp) for example:
 * Postgres, HSQL: the query will throw an exception;
 * ORACLE: the query is executed, but the order is wrong 
 (I believe that in fact Oracle uses Locale to convert the Date to String, and in the Brazilian standard 'dd/MM/yyyy' makes the order wrong, as the ideal would be : 'yyyy/MM/dd';
 * H2: the query is executed correctly (at least in tests, it can be the same scenario as before, as it was with Locale.US the conversion from Date to String was consistent.
-This bug was reported in 2007, but without correction (see the original problem below).
 
+This bug was reported in 2007, but without correction (see the original problem below).
 * My Issue: https://jira.spring.io/browse/DATAJPA-1779
 * Original Issue: https://jira.spring.io/browse/DATAJPA-1198
 * PullRequest: https://github.com/spring-projects/spring-data-jpa/pull/428/
