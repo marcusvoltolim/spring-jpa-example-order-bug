@@ -1,6 +1,6 @@
-# Example that simulates order by bug with non-String column in QueryDSL
+# Bug simulation using order by ignoreCase with non-String column in QueryDSL
 ## Description:
-Bug when assembling an SQL expression using QueryDSL with 'sort by true' on non-String columns.
+Project to simulate a bug when assembling an SQL expression using QueryDSL with 'sort by true' in non-String columns.
 This bug is complicated to simulate because it depends on the database, for columns of type Date (Timestamp) for example:
 * Postgres, HSQL: the query will throw an exception;
 * ORACLE: the query is executed, but the order is wrong 
