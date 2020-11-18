@@ -34,10 +34,9 @@ class ExampleRepositoryTest {
 		repository.save(exampleTwo);
 	}
 
-	//OK
 	@Test
 	void findAllJpaRepositoryOrderByDateProperty() {
-		List<Example> all = repository.findAll(getSort("localDate"));
+		var all = repository.findAll(getSortWithIgnoreCase("localDate"));
 		assertEquals(exampleOne, all.get(0));
 		assertEquals(exampleTwo, all.get(1));
 	}
@@ -45,7 +44,7 @@ class ExampleRepositoryTest {
 	//OK
 	@Test
 	void findAllQueryDslOrderByStringProperty() {
-		List<Example> all = (List<Example>) repository.findAll(QExample.example.isNotNull(), getSort("name"));
+		var all = (List<Example>) repository.findAll(QExample.example.isNotNull(), getSortWithIgnoreCase("name"));
 		assertEquals(exampleOne, all.get(0));
 		assertEquals(exampleTwo, all.get(1));
 	}
@@ -53,7 +52,7 @@ class ExampleRepositoryTest {
 	//BUG
 	@Test
 	void findAllQueryDslOrderByNumericProperty() {
-		List<Example> all = (List<Example>) repository.findAll(QExample.example.isNotNull(), getSort("id"));
+		var all = (List<Example>) repository.findAll(QExample.example.isNotNull(), getSortWithIgnoreCase("id"));
 		assertEquals(exampleOne, all.get(0));
 		assertEquals(exampleTwo, all.get(1));
 	}
@@ -61,13 +60,12 @@ class ExampleRepositoryTest {
 	//BUG
 	@Test
 	void findAllQueryDslOrderByDateProperty() {
-		List<Example> all = (List<Example>) repository.findAll(QExample.example.isNotNull(), getSort("localDate"));
+		var all = (List<Example>) repository.findAll(QExample.example.isNotNull(), getSortWithIgnoreCase("localDate"));
 		assertEquals(exampleOne, all.get(0));
 		assertEquals(exampleTwo, all.get(1));
 	}
 
-
-	private static Sort getSort(String property) {
+	private static Sort getSortWithIgnoreCase(String property) {
 		return Sort.by(Sort.Order.asc(property).ignoreCase());
 	}
 
